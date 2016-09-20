@@ -15,7 +15,13 @@ function PhoneDetailController($http, $routeParams) {
     
     $http.get("phones/" + phoneId + ".json").then(function(response) {
         self.phone = response.data;
+        
+        self.setImage(self.phone.images[0]);
     });
+    
+    self.setImage = function setImage(imageUrl) {
+        self.mainImageUrl = imageUrl;
+    }
 }
 PhoneDetailController.$inject = ['$http', '$routeParams'];
 
